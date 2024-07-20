@@ -44,6 +44,39 @@ python process_hearings.py process hearings.csv processed_hearings.csv 3 1
 python process_hearings.py select processed_hearings.csv selected_hearings.csv 3 
 ```
 
+## CSV Formatting Requirements
+
+### Input File for Processing (`process` task)
+
+The input CSV file should have the following columns:
+
+- `text`: The column containing the text data to be processed.
+
+### Input File for Selecting Segments (`select` task)
+
+The input CSV file should have the following columns:
+
+- `id`: A unique identifier for each row.
+- `text`: The column containing the text data that has been processed into segments.
+- `argument_predictions`: Predictions indicating whether each segment is an argument (`Argument`) or not (`Non-argument`).
+- `argument_confidence`: Confidence scores for the argument predictions.
+
+## Uploading Processed Hearings to WIBA.dev for WIBA-Detect
+
+After processing your hearings data into overlapping segments using the `process` task, you can upload the `processed_hearings.csv` file to WIBA.dev for argument detection. Follow these steps:
+
+1. Go to [WIBA.dev](https://wiba.dev).
+2. Navigate to the "File Upload" section.
+3. Select "Upload" button and load the `processed_hearings.csv` file from your local machine.
+4. Choose the "WIBA-Detect" mode for argument detection.
+5. Once the process is complete, download the results and save them as `selected_segments.csv`.
+   
+_Note that currently there is no progress bar to indicate the progress of WIBA-Detect, however you can estimate the time to completion by knowing the processing speed is roughly 12 rows/second._
+
+You can then use the `select` task to further process the detected arguments based on confidence scores.
+
+
+
 ## Functions
 
 ### `preprocess_text(text)`
