@@ -1,5 +1,11 @@
 # Hearing Processing Script
 
+The methods used in this script are based on the following paper:
+[What Is Being Argued (WIBA)? An Application to Legislative Deliberation in the U.S. Congress](https://arxiv.org/abs/2407.06149v2)
+
+
+
+
 This script is designed to process and analyze textual data from hearing transcripts. It consists of two main functions:
 1. **Processing the file into overlapping text segments**.
 2. **Selecting relevant text segments based on argument labels and confidence scores**.
